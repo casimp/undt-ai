@@ -4,3 +4,5 @@
 /exp_plate_gain.npz
 /profile_surfB.pkl
 /profile_surfA.pkl
+/synth_data.npz
+/synth_inputSignal.txt

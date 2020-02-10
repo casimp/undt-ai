@@ -1,0 +1,7 @@
+md5: c86b21914ab0f95b8d9e02d0387bf0eb
+outs:
+- md5: a35cff8c76a12dcde49bd0a32e197259
+  path: synth_data.npz
+  cache: true
+  metric: false
+  persist: false
