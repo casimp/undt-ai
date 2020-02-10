@@ -1,0 +1,7 @@
+md5: 428ffabba844f27fc3dfe53ddd05f847
+outs:
+- md5: 16c47786b4d7114bf285271dec9b237f
+  path: exp_pipe_surfB.npz
+  cache: true
+  metric: false
+  persist: false

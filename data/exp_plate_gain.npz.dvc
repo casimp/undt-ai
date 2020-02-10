@@ -1,0 +1,7 @@
+md5: be0fc4682b0f392b668d2e3422f51109
+outs:
+- md5: 5ceba0eb419b9b52838817f080602cc4
+  path: exp_plate_gain.npz
+  cache: true
+  metric: false
+  persist: false
