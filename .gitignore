@@ -1,0 +1,15 @@
+# Python files
+*.pyc
+.pypirc
+
+
+# Distribution
+*.egg-info/
+.installed.cfg
+*.egg
+.coverage
+.spyderworkspace
+.vscode*
+
+# Notebooks
+*.ipynb
