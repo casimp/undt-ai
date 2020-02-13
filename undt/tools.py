@@ -10,7 +10,7 @@ def normal(X):
 
 def add_noise(X, level=0.05):
     """ Add white noise as a percentage of the peak signal. """
-    noise = np.random.normal(size=X.shape) * 0.05
+    noise = np.random.normal(size=X.shape) * level
     X_noise = X + np.max(X, axis=1)[:, :, None] * noise
     return X_noise
 
