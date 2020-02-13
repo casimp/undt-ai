@@ -3,7 +3,8 @@ import numpy as np
 from numpy.testing import assert_array_equal
 from pathlib import Path
 from undt.load import load_single, merge_data, merge_load, train_val_test_split
-from undt.load import load_val_split, load_pipeline
+from undt.load import load_val_split, load_pipeline, merge_load_pipeline
+from undt.load import merge_load_split_pipeline
 from sklearn.model_selection import train_test_split
 import os
 
@@ -51,7 +52,19 @@ class TestLoad(unittest.TestCase):
         data = load_val_split(fpath)
         pipe_data = load_pipeline(fpath, levels=[0, 0.01, 0.02, 0.04])
         self.assertEqual(pipe_data[0].size / 4, data[0].size)
+        pipe_data = load_pipeline(fpath, levels=[0,])
+        self.assertEqual(pipe_data[0].size, data[0].size)
+        for i, j in zip(data, pipe_data):
+            self.assertIsNone(assert_array_equal(i, j))
 
+    def test_merge_load_split_pipeline(self):
+        fpath = Path(__file__).parents[1] / 'data/test_data.npz'
+        data = merge_load_pipeline([fpath, fpath], levels=[0,])
+        merged_data = merge_load_split_pipeline([[fpath]*2, [fpath]*2], 
+                                                 [[0,], [0.1,]])
+        for d_s, d_m  in zip(data, merged_data):
+            m_split = np.array_split(d_m, 2, axis=0)[0]
+            self.assertIsNone(assert_array_equal(d_s, m_split))
 
 
 if __name__ == '__main__':
