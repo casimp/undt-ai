@@ -3,6 +3,7 @@ import numpy as np
 from numpy.testing import assert_array_equal
 from pathlib import Path
 from undt.load import load_single, merge_data, merge_load, train_val_test_split
+from undt.load import load_val_split, load_pipeline
 from sklearn.model_selection import train_test_split
 import os
 
@@ -30,12 +31,26 @@ class TestLoad(unittest.TestCase):
             self.assertIsNone(assert_array_equal(d_s, m_split))
 
     def test_train_val_test_split(self):
-        fpath = Path(__file__).parents[1] / 'data/test_data.npz'
-        data = load_single(fpath)
+        data = [np.random.rand(100, 1), np.random.rand(100, 1)]
         tvt_data = train_val_test_split(data, split=[0.5, 0.5], random_state=1)
         tt_data = train_test_split(*data, train_size=0.5, random_state=1)
         for i, j in zip(tvt_data[2::3], tt_data[1::2]):
             self.assertIsNone(assert_array_equal(i, j))
+
+    def test_load_val_split(self):
+        fpath = Path(__file__).parents[1] / 'data/test_data.npz'
+        tvt_data = load_val_split(fpath, split=[0.5, 0.5], random_state=1)
+        tt_data = load_single(fpath)
+        tt_data = train_test_split(*tt_data, train_size=0.5, random_state=1)
+
+        for i, j in zip(tvt_data[2::3], tt_data[1::2]):
+            self.assertIsNone(assert_array_equal(i, j))
+
+    def test_load_pipeline(self):
+        fpath = Path(__file__).parents[1] / 'data/test_data.npz'
+        data = load_val_split(fpath)
+        pipe_data = load_pipeline(fpath, levels=[0, 0.01, 0.02, 0.04])
+        self.assertEqual(pipe_data[0].size / 4, data[0].size)
 
 
 
