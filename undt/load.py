@@ -2,6 +2,14 @@ import numpy as np
 from undt.tools import noise_augment
 from sklearn .model_selection import train_test_split
 
+def load_raw_syn(fpath, t_i=np.linspace(0, 12/1e6, 300), right=0):
+    """ Loads a single raw synthetic (FE generated) data file, crops the
+    final portion of the signal."""
+    t, signal = np.load(fpath)
+    signal_i = np.interp(t_i, t, signal, right=right)
+    return t_i, signal_i
+
+
 def load_single(fpath, crop=45):
     """ Load single data file containing synthetic/experimental UNDT (dpeth) 
     data. This should have been pre-processed, such that the signal array is 
@@ -71,8 +79,8 @@ def load_val_split(fpath, crop=45, split=[0.75, 0.9], random_state=1):
     return data_s
 
 
-def load_pipeline(fpath, levels=[0.01, 0.02, 0.04], crop=45, split=[0.75, 0.9], 
-                  random_state=1):
+def load_pipeline(fpath, levels=[0, 0.01, 0.02, 0.04], crop=45, 
+                  split=[0.75, 0.9], random_state=1):
     """Load single data set and carry out a train-test and then a
     train-validation split. These two splits can be specified and there is an 
     option to crop the first portion of the signal to remove cross-talk. 
@@ -87,7 +95,7 @@ def load_pipeline(fpath, levels=[0.01, 0.02, 0.04], crop=45, split=[0.75, 0.9],
 
 
 
-def merge_load_pipeline(fpaths: list, levels=[0.01, 0.02, 0.04], crop=45, 
+def merge_load_pipeline(fpaths: list, levels=[0, 0.01, 0.02, 0.04], crop=45, 
                         split=[0.75, 0.9], random_state=1):
     """Load and merge multiple data set and carry out a train-test and then a
     train-validation split. These two splits can be specified and there is an 
