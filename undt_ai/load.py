@@ -10,6 +10,26 @@ def load_raw_syn(fpath, t_i=np.linspace(0, 12/1e6, 300), right=0):
     return t_i, signal_i
 
 
+def load_single_wtime(fpath, crop=45):
+    """ Load single data file containing synthetic/experimental UNDT (dpeth) 
+    data. This should have been pre-processed, such that the signal array is 
+    300 pnts long. Option to crop the first portion of the signal to remove
+    cross-talk. This version includes time data. """
+    data_dict = np.load(fpath)
+    t = data_dict['t'][:, crop:]
+    signal = data_dict['signal'][:, crop:]
+    D = data_dict['D']
+    try:
+        Dmin = data_dict['Dmin']
+    except KeyError:
+        Dmin = np.nan * np.ones_like(D)
+    try:
+        rms = data_dict['RMS']
+    except KeyError:
+        rms = np.nan * np.ones_like(D)
+
+    return t, signal, Dmin, D, rms
+
 def load_single(fpath, crop=45):
     """ Load single data file containing synthetic/experimental UNDT (dpeth) 
     data. This should have been pre-processed, such that the signal array is 
