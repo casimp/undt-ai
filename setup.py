@@ -1,8 +1,8 @@
 from setuptools import setup
 
 setup(
-    name='undt',
+    name='undt-ai',
     author='C. Simpson',
     author_email='c.a.simpson01@gmail.com',
-    packages=['undt'],
+    packages=['undt_ai'],
 )
