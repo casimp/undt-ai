@@ -13,3 +13,11 @@
 
 # Notebooks
 *.ipynb
+notebooks/
+
+# MLFlow
+*mlruns/
+
+# Models
+data/models
+data/checkpoints
