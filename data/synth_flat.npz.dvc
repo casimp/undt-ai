@@ -1,0 +1,7 @@
+md5: 548709a6298f5246c675378fd7d255ff
+outs:
+- md5: a4625a3c16f6c7fb744d5092bbe76b2b
+  path: synth_flat.npz
+  cache: true
+  metric: false
+  persist: false
