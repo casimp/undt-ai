@@ -1,5 +1,5 @@
 import numpy as np
-from undt.tools import noise_augment
+from undt_ai.tools import noise_augment
 from sklearn .model_selection import train_test_split
 
 def load_raw_syn(fpath, t_i=np.linspace(0, 12/1e6, 300), right=0):

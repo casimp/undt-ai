@@ -2,9 +2,9 @@ import unittest
 import numpy as np
 from numpy.testing import assert_array_equal
 from pathlib import Path
-from undt.load import load_single, merge_data, merge_load, train_val_test_split
-from undt.load import load_val_split, load_pipeline, merge_load_pipeline
-from undt.load import merge_load_split_pipeline
+from undt_ai.load import load_single, merge_data, merge_load, train_val_test_split
+from undt_ai.load import load_val_split, load_pipeline, merge_load_pipeline
+from undt_ai.load import merge_load_split_pipeline
 from sklearn.model_selection import train_test_split
 import os
 

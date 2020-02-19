@@ -1,6 +1,6 @@
 import unittest
 import numpy as np
-from undt.tools import normal
+from undt_ai.tools import normal
 from numpy.testing import assert_array_equal
 
 class TestTools(unittest.TestCase):
