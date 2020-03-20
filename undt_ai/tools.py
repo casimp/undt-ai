@@ -4,9 +4,10 @@ def rmse(y_true, y_pred):
     from tensorflow.keras import backend as K
     return K.sqrt(K.mean(K.square(y_pred - y_true)))
 
-def normal(X):
-    """Normalise signal by the max recorded value"""
-    return X / X.max(axis=1, keepdims=True)
+def normal(X, start_idx=0, axis=1):
+    """Normalise signal by the max recorded value past the defined start_idx.
+    Define the axis to normalise across. """
+    return X / X[:, start_idx:].max(axis=axis, keepdims=True)
 
 def add_noise(X, level=0.05):
     """ Add white noise as a percentage of the peak signal. """
