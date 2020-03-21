@@ -1,0 +1,7 @@
+md5: d003dcf4b586b8f24141f90c08e2f0d9
+outs:
+- md5: 2d7277be443a2f0a28a1cc6672e896c2
+  path: exp_flat.npz
+  cache: true
+  metric: false
+  persist: false
