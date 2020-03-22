@@ -2,6 +2,8 @@
 *.pyc
 .pypirc
 
+# Scripts
+undt_ai/scripts/*
 
 # Distribution
 *.egg-info/
@@ -21,3 +23,6 @@ notebooks/
 # Models
 data/models
 data/checkpoints
+
+#Data
+data/old
