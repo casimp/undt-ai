@@ -30,25 +30,6 @@ def load_single(fpath, crop=45):
 
     return t, signal, dmin, d, rms
 
-# def load_single(fpath, crop=45):
-#     """ Load single data file containing synthetic/experimental UNDT (dpeth) 
-#     data. This should have been pre-processed, such that the signal array is 
-#     300 pnts long. Option to crop the first portion of the signal to remove
-#     cross-talk."""
-#     data_dict = np.load(fpath)
-#     signal = data_dict['signal'][:, crop:]
-#     D = data_dict['D']
-#     try:
-#         Dmin = data_dict['Dmin']
-#     except KeyError:
-#         Dmin = np.nan * np.ones_like(D)
-#     try:
-#         rms = data_dict['RMS']
-#     except KeyError:
-#         rms = np.nan * np.ones_like(D)
-
-#     return signal, Dmin, D, rms
-
 def merge_data(data: list):
     """ Merge list of list of arrays. """
     return [np.vstack(i) for i in zip(*data)]
@@ -126,7 +107,7 @@ def merge_load_pipeline(fpaths: list, levels=[0, 0.01, 0.02, 0.04], crop=45,
     data = []
     for fpath in fpaths:
         d = load_pipeline(fpath, levels, crop, split, random_state)
-        assert len(d) == 12
+        assert len(d) == 15, f'{len(d)}'
         data.append(d)
     return merge_data(data)
 
