@@ -1,7 +1,0 @@
-md5: 3719b39bbc52e7bef5464da1ced881bc
-outs:
-- md5: 0c16e04cf227d77a50c45a57adecfa0f
-  path: exp_plate.npz
-  cache: true
-  metric: false
-  persist: false
