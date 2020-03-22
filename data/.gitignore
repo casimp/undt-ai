@@ -10,3 +10,6 @@
 /synth_flat_fft_vel.npz
 /synth_flat_fft.npz
 /synth_flat_vel.npz
+/synth_data_fft.npz
+/synth_data_vel.npz
+/synth_data_fft_vel.npz

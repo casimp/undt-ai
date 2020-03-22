@@ -1,0 +1,7 @@
+md5: 467afbc9c2080c83d49c90112600e71c
+outs:
+- md5: f9eead5a98797de6673b4a0fb4077bf0
+  path: synth_data_fft_vel.npz
+  cache: true
+  metric: false
+  persist: false

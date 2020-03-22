@@ -1,0 +1,7 @@
+md5: 52a81958ccc1f2f8f3dbb7eff4a2172c
+outs:
+- md5: 4fbc5b7bd56ff0dbb7786113550cdfb5
+  path: synth_data_vel.npz
+  cache: true
+  metric: false
+  persist: false
