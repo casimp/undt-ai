@@ -1,0 +1,7 @@
+md5: 962b38b0901cc24b0b4c712aebff29ac
+outs:
+- md5: 4bdc2da564831edc623998eba74a166b
+  path: synth_flat_vel.npz
+  cache: true
+  metric: false
+  persist: false

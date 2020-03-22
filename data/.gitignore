@@ -7,3 +7,6 @@
 /exp_pipe_surfA.npz
 /synth_flat.npz
 /exp_flat.npz
+/synth_flat_fft_vel.npz
+/synth_flat_fft.npz
+/synth_flat_vel.npz
