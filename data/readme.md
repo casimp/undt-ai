@@ -43,3 +43,18 @@ profilometry measurements across the pipe inner diameter (thereby defining the s
 
 - **profile_surfA.pkl**: profile from which the exp_pipe_surfA measurements were made.
 - **profile_surfB.pkl**: profile from which the exp_pipe_surfB measurements were made.
+
+## How to access data
+
+The data is managed using DVC (data version control), which is like git but for data. 
+When using DVC, a tracked data file is associated with a .dvc metadata file. Git is used 
+to track changes in the .dvc file and dvc is used to manage the raw data file. 
+
+The data described above is stored in a AWS S3 bucket. To pull the actual data (not just the .dvc files tracked by Git) the following steps need to be taken:
+
+- Download and install DVC (https://dvc.org/)
+- Download and install AWS CLI (command line interface) (https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-windows.html)
+- On the command line enter "aws configure"
+- Enter the security credentials (these need to be provided by the S3 bucket owner)
+- Go to the repo and enter "dvc pull"
+
