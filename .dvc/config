@@ -1,0 +1,5 @@
+
+['remote "aws"']
+url = s3://undt-ai/data
+[core]
+remote = aws
