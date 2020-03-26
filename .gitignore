@@ -3,7 +3,7 @@
 .pypirc
 
 # Scripts
-undt_ai/scripts/*
+undt_ai/scripts/old*
 
 # Distribution
 *.egg-info/

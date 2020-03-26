@@ -1,9 +1,5 @@
-undt-ai: 
+undt-ai: Ultrasound time-series analysis for corrosion assessment
 ===============================================
-
-What is undt-ai?
--------------
-
 
 Requirements
 ------------
