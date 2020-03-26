@@ -1,3 +1,10 @@
+"""
+Repeat runs of the 'best-in-class' models, as defined during the hyper-parameter 
+search for the raw, synthetic data. Attempts to characterise how stochastic the process is.
+Checksre made prior to running a model to ensure that the model hasn't previously
+been evaluated. Training and testing run on the mean profile thickness.
+"""
+
 from pathlib import Path
 import itertools
 import numpy as np

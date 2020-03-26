@@ -1,10 +1,16 @@
+"""
+Grid search of the model hyper-parameter space for the raw, synthetic data. 
+The number of layer, kernel size and pooling are sampled. Checks
+are made prior to running a model to ensure that the model hasn't previously
+been evaluated. Training and testing run on the mean profile thickness.
+"""
 from pathlib import Path
 import itertools
 import numpy as np
 import pandas as pd
 import logging
-# from tensorflow import errors
 
+# from tensorflow import errors
 from tensorflow.keras.callbacks import ModelCheckpoint, CSVLogger, Callback
 from tensorflow.keras. models import load_model
 
