@@ -68,7 +68,7 @@ df_log_store = pd.read_pickle(fpath_log_store)
 for idx, values in enumerate(params):
 
     ps = dict(zip(keys, values))
-    if ps['n_layers'] <= 3:
+    if ps['n_layers'] <= 2:
         param_loc = (df[list(ps)] == pd.Series(ps)).all(axis=1)
 
         successful = False

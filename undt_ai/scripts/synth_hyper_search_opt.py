@@ -11,7 +11,7 @@ import pandas as pd
 import logging
 # from tensorflow import errors
 
-from tensorflow.keras.callbacks import ModelCheckpoint, CSVLogger, Callback
+from tensorflow.keras.callbacks import ModelCheckpoint, CSVLogger, Callback, ReduceLROnPlateau
 from tensorflow.keras. models import load_model
 
 from undt_ai.synthetic_build import n_layer_model, create_params
@@ -70,7 +70,7 @@ for idx, values in enumerate(params):
         if np.any(df.loc[param_loc, 'val_rmse'].values != '') and not overwrite:
             
 
-            if test_r > 1.5 and repeat_bad:
+            if test_r > 0.3 and repeat_bad:
                 print(f'{values}: Not successful. Repeating (test_rmse = {test_r[0]:.2f}).')
             else:
                 print(f'{values}: Run already complete. Skipping (test_rmse = {test_r[0]:.2f}).')
@@ -89,6 +89,7 @@ for idx, values in enumerate(params):
             print(model.summary())
             checkpoint = ModelCheckpoint(filepath=fpath_ckpnt, monitor='val_loss',save_weight_only=False,
                             verbose=0, save_best_only=True)
+            reduce_lr = ReduceLROnPlateau(patience=50, min_delta=0, factor=0.5)
             csv_logger = CSVLogger(fpath_log, separator=',', append=False)
 
             start_time = time.time()
