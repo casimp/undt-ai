@@ -124,3 +124,23 @@ def create_params(param_dict):
 
     return keys, params, df
 
+def n_layer_optimal(input_shape: tuple, n_layers=3, filters=64, drop=False):
+    """
+    For a defined input_shape creates an optimised 1D CNN network based on 
+    the principle of maximising the receptive field size. The number of layers
+    must be greater than 1. Btach normalisation is applied after each layer, 
+    which will generally provide adequate regularisation and normalisation,
+    although there is an optiion to include dropout on the final layer (p=0.2).
+    """
+    if len(input_shape) == 1:
+        input_shape = input_shape + (1,)
+    assert n_layers > 1, 'Poor performance on very shallow model (set N > =1)'
+    kernel_size = input_shape[0] // n_layers
+
+    model = n_layer_model(n_layers=n_layers, filters=filters, kernel_size=kernel_size, 
+                          input_shape=input_shape, batch_norm=True, 
+                          drop_layers=[-1 if drop else 0], drop_fraction=0.2, 
+                          pool_step=0, optimizer=Adam(),
+                          n_predictions=1, loss='mse', metrics=rmse)
+
+    return model
