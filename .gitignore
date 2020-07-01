@@ -14,8 +14,8 @@ undt_ai/scripts/old*
 .vscode*
 
 # Notebooks
-*.ipynb
-notebooks/
+# *.ipynb
+# notebooks/
 
 # MLFlow
 *mlruns/
